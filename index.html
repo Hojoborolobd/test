@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hojoborolo — Homemade Cakes in Sylhet | Abida Akther Chowdhury</title>
+  <meta name="description" content="Fresh homemade cakes, tub cakes & chocolates in Sylhet. Custom designs, home delivery. Order: +8801781-008223" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='100%' height='100%' fill='%23fff2f2'/><circle cx='32' cy='32' r='20' fill='%23ff6b9d'/></svg>" />
+
+  <style>
+    :root{
+      --pink:#ff6b9d;
+      --rosy:#8b4a4a;
+      --cream:#fff9f9;
+      --muted:#6b5560;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      color:#333;
+      background:linear-gradient(180deg, #fffaf8 0%, #fff 100%);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.6;
+    }
+
+    .wrap{max-width:1100px;margin:0 auto;padding:16px}
+
+    /* Header */
+    header{display:flex;align-items:center;gap:12px;padding:12px 0;flex-wrap:wrap}
+    .logo-img{width:70px;height:70px;border-radius:12px;object-fit:cover;box-shadow:0 4px 12px rgba(139,74,74,0.12);flex-shrink:0}
+    .brand{line-height:1.2;flex:1;min-width:0}
+    .brand h1{font-size:18px;margin:0;color:var(--rosy)}
+    .brand p{margin:4px 0 0;font-size:12px;color:var(--muted)}
+
+    nav{display:flex;justify-content:center;gap:8px;margin-top:12px;width:100%;flex-wrap:wrap}
+    nav a{color:var(--rosy);text-decoration:none;padding:8px 12px;border-radius:20px;font-weight:600;font-size:13px;white-space:nowrap}
+    nav a:hover{background:rgba(255,107,157,0.08)}
+
+    /* HERO */
+    .hero{
+      text-align:center;
+      padding:60px 20px 40px;
+      background:linear-gradient(135deg, rgba(255,107,157,0.05) 0%, rgba(139,74,74,0.03) 100%);
+      border-radius:16px;
+      margin:20px 0;
+    }
+    .hero-title{
+      font-size:42px;
+      margin:0 0 16px;
+      color:var(--rosy);
+      line-height:1.2;
+      font-weight:800;
+    }
+    .hero-subtitle{
+      font-size:18px;
+      color:var(--muted);
+      margin:0 0 12px;
+      font-weight:500;
+    }
+    .hero-tagline{
+      font-size:15px;
+      color:#7b6770;
+      margin:0 0 30px;
+    }
+
+    /* Action Buttons */
+    .hero-actions{
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-bottom:30px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 28px;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:700;
+      font-size:15px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.12);
+      transition:transform 0.2s;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--pink);color:#fff}
+    .btn-outline{background:white;border:2px solid var(--pink);color:var(--pink)}
+
+    /* Social Icon Links */
+    .social-icons{
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .icon-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      background:white;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      transition:all 0.2s;
+      text-decoration:none;
+    }
+    .icon-link:hover{
+      transform:translateY(-3px);
+      box-shadow:0 6px 16px rgba(0,0,0,0.15);
+    }
+    .icon-link svg{width:24px;height:24px}
+
+    /* Sections */
+    section{padding:40px 0;border-top:1px solid rgba(0,0,0,0.03)}
+    .section-title{font-size:24px;color:var(--rosy);margin-bottom:20px;font-weight:700;text-align:center}
+    .section-desc{text-align:center;color:var(--muted);margin-bottom:30px;font-size:15px}
+
+    /* Gallery Grid */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:20px;
+    }
+    .gallery-item{
+      position:relative;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 6px 20px rgba(0,0,0,0.1);
+      cursor:pointer;
+      transition:transform 0.3s;
+      aspect-ratio:1;
+    }
+    .gallery-item:hover{transform:scale(1.03)}
+    .gallery-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .gallery-overlay{
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color:white;
+      padding:16px;
+      text-align:center;
+    }
+    .gallery-overlay h4{margin:0;font-size:16px}
+    .gallery-overlay p{margin:4px 0 0;font-size:13px;opacity:0.9}
+
+    /* Gallery Modal */
+    .modal{
+      display:none;
+      position:fixed;
+      z-index:9999;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.95);
+      overflow:auto;
+    }
+    .modal.active{display:block}
+    .modal-content{
+      max-width:900px;
+      margin:40px auto;
+      padding:20px;
+    }
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:20px;
+      color:white;
+    }
+    .modal-close{
+      background:var(--pink);
+      color:white;
+      border:none;
+      padding:10px 20px;
+      border-radius:25px;
+      cursor:pointer;
+      font-size:16px;
+      font-weight:700;
+    }
+    .photo-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:16px;
+    }
+    .photo-item{
+      border-radius:8px;
+      overflow:hidden;
+      aspect-ratio:1;
+    }
+    .photo-item img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      cursor:pointer;
+      transition:transform 0.2s;
+    }
+    .photo-item img:hover{transform:scale(1.05)}
+
+    /* Reviews */
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+    }
+    .review-card{
+      background:linear-gradient(180deg,#fff9f9,#fff);
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.05);
+    }
+    .review-card strong{color:#ffd700;font-size:18px}
+    .review-card p{color:#6b5560;margin:10px 0 0;font-size:14px;line-height:1.7}
+
+    /* Menu */
+    .menu-grid{display:grid;grid-template-columns:1fr;gap:24px}
+    .menu-section h3{color:var(--rosy);margin:0 0 12px;font-size:18px}
+    .menu-items{display:grid;gap:10px}
+    .menu-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px;
+      border-radius:10px;
+      background:#fff9f9;
+      box-shadow:0 4px 12px rgba(0,0,0,0.04);
+      gap:12px;
+    }
+    .menu-item-left{flex:1;min-width:0}
+    .menu-item-left strong{font-size:14px;color:var(--rosy)}
+    .menu-item small{color:#7b6770;font-size:12px;display:block;margin-top:2px}
+    .menu-item-price{color:var(--pink);font-weight:700;font-size:14px;white-space:nowrap}
+
+    /* Payment */
+    .payment{
+      background:white;
+      border-left:4px solid var(--pink);
+      padding:20px;
+      border-radius:10px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.04);
+      margin-top:20px;
+    }
+    .payment h4{margin:0 0 14px;color:var(--rosy);font-size:18px}
+    .payment ul{margin:0;padding-left:20px;color:#6b5560;line-height:1.9;font-size:14px}
+
+    /* Contact Cards */
+    .contact-grid{display:grid;grid-template-columns:1fr;gap:20px}
+    .contact-card{
+      background:linear-gradient(180deg,#fff,#fff9f9);
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.04);
+    }
+    .contact-card h3{margin:0 0 16px;color:var(--rosy);font-size:18px}
+
+    /* Contact Info with Icons */
+    .contact-info{display:flex;flex-direction:column;gap:12px}
+    .contact-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:12px;
+      background:white;
+      border-radius:8px;
+      transition:transform 0.2s;
+      box-shadow:0 2px 8px rgba(0,0,0,0.04);
+    }
+    .contact-item:hover{transform:translateX(4px)}
+    .contact-icon{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--pink), #ff8eb3);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+    }
+    .contact-icon svg{width:20px;height:20px;fill:white}
+    .contact-text{flex:1}
+    .contact-text strong{display:block;font-size:12px;color:var(--muted);margin-bottom:2px}
+    .contact-text a{color:var(--rosy);text-decoration:none;font-weight:600;word-break:break-word;font-size:14px}
+
+    /* Form */
+    form{display:flex;flex-direction:column;gap:10px}
+    form input,form textarea{
+      width:100%;
+      padding:12px;
+      border-radius:8px;
+      border:1px solid #ddd;
+      font-size:14px;
+      font-family:inherit;
+    }
+    form button{width:100%;border:none;cursor:pointer}
+    form p{font-size:12px;color:#7b6770;margin:8px 0 0}
+
+    /* Footer */
+    footer{
+      padding:24px;
+      text-align:center;
+      color:#fff;
+      background:linear-gradient(90deg,var(--rosy),#5a3030);
+      border-radius:10px;
+      margin-top:30px;
+      font-size:13px;
+    }
+    footer a{color:#fff;text-decoration:underline}
+    .footer-content{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    /* Floating WhatsApp */
+    .whatsapp{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      background:linear-gradient(180deg,#25D366,#1DA851);
+      color:#fff;
+      padding:14px 18px;
+      border-radius:50px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.3);
+      z-index:999;
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      transition:transform 0.2s;
+    }
+    .whatsapp:hover{transform:scale(1.05)}
+    .whatsapp svg{width:20px;height:20px}
+
+    /* Responsive */
+    @media (min-width:768px){
+      .wrap{padding:28px}
+      header{flex-wrap:nowrap}
+      nav{width:auto;margin-left:auto;margin-top:0}
+      .hero-title{font-size:56px}
+      .hero-subtitle{font-size:22px}
+      .menu-grid{grid-template-columns:1fr 1fr}
+      .contact-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width:400px){
+      .hero-title{font-size:32px}
+      .hero-subtitle{font-size:16px}
+      .logo-img{width:56px;height:56px}
+      .whatsapp span{display:none}
+      .whatsapp{padding:14px;border-radius:50%}
+    }
+
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Header -->
+    <header>
+      <img src="logo.jpg" alt="Hojoborolo" class="logo-img" onerror="this.style.display='none'">
+      <div class="brand">
+        <h1>Hojoborolo</h1>
+        <p>Homemade Cakes • Sylhet</p>
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#menu">Menu</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <h2 class="hero-title">Fresh Homemade Cakes</h2>
+      <p class="hero-subtitle">Delivered with Love Across Sylhet</p>
+      <p class="hero-tagline">Made by Abida Akther Chowdhury • Custom Designs • Premium Quality</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/8801781008223?text=Hi%20Abida!%20I%20want%20to%20order%20a%20cake." target="_blank">
+          Order on WhatsApp
+        </a>
+        <a class="btn btn-outline" href="mailto:abidachy0910@gmail.com?subject=Order%20Inquiry">
+          Email Order
+        </a>
+      </div>
+
+      <!-- Social Icons Only -->
+      <div class="social-icons">
+        <a href="tel:+8801781008223" class="icon-link" title="Call us">
+          <svg fill="var(--rosy)" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+        </a>
+        <a href="https://instagram.com/hojoborolo_24" target="_blank" class="icon-link" title="Instagram">
+          <svg fill="url(#instagram-gradient)" viewBox="0 0 24 24"><defs><linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#833ab4"/><stop offset="50%" style="stop-color:#fd1d1d"/><stop offset="100%" style="stop-color:#fcb045"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://tiktok.com/@hojoborolo_24" target="_blank" class="icon-link" title="TikTok">
+          <svg fill="#000" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/share/16YWZbN8qF/" target="_blank" class="icon-link" title="Facebook">
+          <svg fill="#1877f2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2 class="section-title">Our Cake Gallery</h2>
+      <p class="section-desc">Click any category to see more photos</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openGallery('birthday')">
+          <img src="birthday-cover.jpg" alt="Birthday Cakes" class="gallery-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23f5d4d4%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2280%22%3E🎂%3C/text%3E%3C/svg%3E'">
+          <div class="gallery-overlay">
+            <h4>Birthday Cakes</h4>
+            <p>Click to see all photos</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openGallery('party')">
+          <img src="party-cover.jpg" alt="Party Cakes" class="gallery-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23ffb6c1%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2280%22%3E🎉%3C/text%3E%3C/svg%3E'">
+          <div class="gallery-overlay">
+            <h4>Party & Celebration</h4>
+            <p>Click to see all photos</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openGallery('tub')">
+          <img src="tub-cover.jpg" alt="Tub Cakes" class="gallery-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23fff0f5%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2280%22%3E🥮%3C/text%3E%3C/svg%3E'">
+          <div class="gallery-overlay">
+            <h4>Tub Cakes</h4>
+            <p>Click to see all photos</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openGallery('chocolate')">
+          <img src="chocolate-cover.jpg" alt="Chocolates" class="gallery-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23ffc0cb%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2280%22%3E🍫%3C/text%3E%3C/svg%3E'">
+          <div class="gallery-overlay">
+            <h4>Chocolates</h4>
+            <p>Click to see all photos</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal" onclick="closeGallery()">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <h2 id="modalTitle" style="margin:0;color:white">Gallery</h2>
+          <button class="modal-close" onclick="closeGallery()">✕ Close</button>
+        </div>
+        <div id="photoGrid" class="photo-grid"></div>
+      </div>
+    </div>
+
+    <!-- REVIEWS -->
+    <section id="reviews">
+      <h2 class="section-title">Happy Customers</h2>
+      <p class="section-desc">Real reviews from Sylhet customers</p>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <strong>⭐⭐⭐⭐⭐</strong>
+          <p>"Best chocolate cake in Sylhet! The taste is incredible and delivered on time. Highly recommend Hojoborolo!" <br><strong>— Raihan Ahmed</strong></p>
+        </div>
+        <div class="review-card">
+          <strong>⭐⭐⭐⭐⭐</strong>
+          <p>"আমার বিয়ের কেক টা এতো সুন্দর হয়েছিল! Everyone praised it. Abida apu's work is amazing!" <br><strong>— Sabrina Khan</strong></p>
+        </div>
+        <div class="review-card">
+          <strong>⭐⭐⭐⭐⭐</strong>
+          <p>"The tub cakes are addictive! I order every week. Fresh, delicious, and great service." <br><strong>— Fahim Hassan</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu">
+      <h2 class="section-title">Menu & Prices</h2>
+
+      <div class="menu-grid">
+        <div class="menu-section">
+          <h3>🎂 Cakes (per pound)</h3>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Chocolate</strong>
+                <small>Rich chocolate cake</small>
+              </div>
+              <div class="menu-item-price">750 TK</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Vanilla</strong>
+                <small>Classic & soft</small>
+              </div>
+              <div class="menu-item-price">700 TK</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Mango</strong>
+                <small>Seasonal fresh</small>
+              </div>
+              <div class="menu-item-price">700 TK</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Lemon</strong>
+                <small>Fresh & zesty</small>
+              </div>
+              <div class="menu-item-price">700 TK</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Orange</strong>
+                <small>Citrus delight</small>
+              </div>
+              <div class="menu-item-price">700 TK</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-section">
+          <h3>🥮 Tub Cakes & Chocolates</h3>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Dream Tub</strong>
+                <small>250 / 500 / 1000 ml</small>
+              </div>
+              <div class="menu-item-price">200/380/750 TK</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Biscuit Tub</strong>
+                <small>250 / 500 / 1000 ml</small>
+              </div>
+              <div class="menu-item-price">160/320/620 TK</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Chocolate Tub</strong>
+                <small>250 / 500 / 1000 ml</small>
+              </div>
+              <div class="menu-item-price">150/300/580 TK</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Vanilla Tub</strong>
+                <small>250 / 500 / 1000 ml</small>
+              </div>
+              <div class="menu-item-price">150/300/580 TK</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Lemon Tub</strong>
+                <small>250 / 500 / 1000 ml</small>
+              </div>
+              <div class="menu-item-price">150/300/580 TK</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Orange Tub</strong>
+                <small>250 / 500 / 1000 ml</small>
+              </div>
+              <div class="menu-item-price">150/300/580 TK</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-left">
+                <strong>Chocolate Box</strong>
+                <small>10 pieces assorted</small>
+              </div>
+              <div class="menu-item-price">150 TK</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="payment">
+        <h4>💳 How to Order & Payment</h4>
+        <ul>
+          <li><strong>Order 24 hours in advance</strong> for custom cakes</li>
+          <li><strong>Advance payment:</strong> 50% via bKash/Nagad to confirm order</li>
+          <li><strong>Rest 50%:</strong> Cash on delivery</li>
+          <li><strong>Contact:</strong> +880 1781-008223 • <a href="mailto:abidachy0910@gmail.com">abidachy0910@gmail.com</a></li>
+          <li><strong>Delivery:</strong> Available anywhere in Sylhet city</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Contact & Orders</h2>
+
+      <div class="contact-grid">
+        <!-- Get in Touch Card -->
+        <div class="contact-card">
+          <h3>Get in Touch</h3>
+          <p style="color:#6b5560;margin-bottom:16px">Contact us via phone, WhatsApp, email, or social media. We respond quickly!</p>
+
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+              </div>
+              <div class="contact-text">
+                <strong>Phone / WhatsApp</strong>
+                <a href="tel:+8801781008223">+880 1781-008223</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div class="contact-text">
+                <strong>Email</strong>
+                <a href="mailto:abidachy0910@gmail.com">abidachy0910@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </div>
+              <div class="contact-text">
+                <strong>Instagram</strong>
+                <a href="https://instagram.com/hojoborolo_24" target="_blank">@hojoborolo_24</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </div>
+              <div class="contact-text">
+                <strong>Facebook</strong>
+                <a href="https://www.facebook.com/share/16YWZbN8qF/" target="_blank">Facebook Page</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Order Form Card -->
+        <div class="contact-card">
+          <h3>Quick Order Form</h3>
+          <p style="color:#6b5560;margin-bottom:16px">Fill the form below and send directly to WhatsApp</p>
+          
+          <form id="quickOrder" onsubmit="return quickOrder(event)">
+            <input id="name" placeholder="Your name" required />
+            <input id="phone" placeholder="Phone (e.g. +8801...)" required />
+            <input id="item" placeholder="What would you like?" required />
+            <input id="date" placeholder="Delivery date (optional)" />
+            <textarea id="note" placeholder="Notes, design requests (optional)" rows="3"></textarea>
+            <button class="btn btn-primary" type="submit">Send Order to WhatsApp</button>
+          </form>
+          <p>We'll receive your message on WhatsApp and reply with price & payment details.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div>© <strong>Hojoborolo</strong> • Abida Akther Chowdhury</div>
+        <div style="opacity:0.7">•</div>
+        <div>Sylhet, Bangladesh</div>
+        <div style="opacity:0.7">•</div>
+        <div>Order: <a href="tel:+8801781008223">+880 1781-008223</a></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Floating WhatsApp Button -->
+  <a class="whatsapp" href="https://wa.me/8801781008223?text=Hello%20Abida!%20I%20want%20to%20order%20a%20cake." target="_blank" rel="noopener" aria-label="Order on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M20.52 3.48A11.76 11.76 0 0012 0C5.37 0 .01 5.37.01 12a11.73 11.73 0 001.98 6.2L0 24l5.97-1.96A11.9 11.9 0 0012 24c6.63 0 12-5.37 12-12 0-3.18-1.24-6.17-3.48-8.52z" fill="#fff"/>
+      <path d="M17.6 14.69c-.29-.14-1.7-.84-1.96-.94-.26-.1-.44-.14-.63.14-.19.28-.74.94-.9 1.13-.16.19-.32.21-.6.07-.29-.14-1.22-.45-2.33-1.44-.86-.77-1.43-1.73-1.6-2.02-.17-.28-.02-.43.12-.58.12-.12.29-.32.44-.48.16-.16.21-.28.32-.46.11-.19.05-.35-.02-.49-.07-.14-.63-1.52-.86-2.08-.23-.54-.47-.46-.63-.47-.16-.02-.35-.02-.54-.02-.19 0-.5.07-.76.35-.27.28-1.03 1.01-1.03 2.46 0 1.44 1.05 2.83 1.19 3.02.14.19 2.04 3.12 4.95 4.37 2.91 1.25 2.91.83 3.44.78.53-.05 1.72-.7 1.97-1.38.25-.67.25-1.24.18-1.38-.07-.14-.26-.19-.55-.33z" fill="#25D366"/>
+    </svg>
+    <span>Order on WhatsApp</span>
+  </a>
+
+  <script>
+    // Gallery data - Add your actual photo filenames here
+    const galleryPhotos = {
+      birthday: [
+        'birthday-1.jpg', 'birthday-2.jpg', 'birthday-3.jpg', 'birthday-4.jpg',
+        'birthday-5.jpg', 'birthday-6.jpg', 'birthday-7.jpg', 'birthday-8.jpg',
+        'birthday-9.jpg', 'birthday-10.jpg'
+      ],
+      party: [
+        'party-1.jpg', 'party-2.jpg', 'party-3.jpg', 'party-4.jpg',
+        'party-5.jpg', 'party-6.jpg', 'party-7.jpg', 'party-8.jpg',
+        'party-9.jpg', 'party-10.jpg'
+      ],
+      tub: [
+        'tub-1.jpg', 'tub-2.jpg', 'tub-3.jpg', 'tub-4.jpg',
+        'tub-5.jpg', 'tub-6.jpg', 'tub-7.jpg', 'tub-8.jpg',
+        'tub-9.jpg', 'tub-10.jpg'
+      ],
+      chocolate: [
+        'chocolate-1.jpg', 'chocolate-2.jpg', 'chocolate-3.jpg', 'chocolate-4.jpg',
+        'chocolate-5.jpg', 'chocolate-6.jpg', 'chocolate-7.jpg', 'chocolate-8.jpg',
+        'chocolate-9.jpg', 'chocolate-10.jpg'
+      ]
+    };
+
+    const galleryTitles = {
+      birthday: 'Birthday Cakes',
+      party: 'Party & Celebration Cakes',
+      tub: 'Tub Cakes',
+      chocolate: 'Artisan Chocolates'
+    };
+
+    function openGallery(category) {
+      const modal = document.getElementById('galleryModal');
+      const title = document.getElementById('modalTitle');
+      const photoGrid = document.getElementById('photoGrid');
+      
+      title.textContent = galleryTitles[category];
+      photoGrid.innerHTML = '';
+      
+      galleryPhotos[category].forEach(photo => {
+        const div = document.createElement('div');
+        div.className = 'photo-item';
+        div.innerHTML = `<img src="${photo}" alt="${galleryTitles[category]}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23f5d4d4%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2260%22%3E🎂%3C/text%3E%3C/svg%3E'">`;
+        photoGrid.appendChild(div);
+      });
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGallery() {
+      const modal = document.getElementById('galleryModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function quickOrder(e) {
+      e.preventDefault();
+      const name = encodeURIComponent(document.getElementById('name').value.trim() || 'Customer');
+      const phone = encodeURIComponent(document.getElementById('phone').value.trim() || '');
+      const item = encodeURIComponent(document.getElementById('item').value.trim() || 'Cake');
+      const date = encodeURIComponent(document.getElementById('date').value.trim() || 'Not specified');
+      const note = encodeURIComponent(document.getElementById('note').value.trim() || 'None');
+      const message = `Hello Abida!%0A%0AName: ${name}%0APhone: ${phone}%0AOrder: ${item}%0ADelivery: ${date}%0ANotes: ${note}`;
+      window.open(`https://wa.me/8801781008223?text=${message}`, '_blank');
+      return false;
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeGallery();
+    });
+  </script>
+</body>
+</html>
